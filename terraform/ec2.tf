@@ -1,15 +1,19 @@
-
-# Latest Amazon Linux 2023 AMI
+# Latest Amazon Linux 2023 AMI (kernel 6.1)
 data "aws_ami" "al2023" {
   most_recent = true
   owners      = ["137112412989"] # Amazon
-  filter { name = "name" values = ["al2023-ami-*-kernel-6.1-*"] }
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-*-kernel-6.1-*"]
+  }
 }
 
-# (Optional) Simple user_data that installs nginx to test connectivity
+# Optional test page via user_data (can replace with k3s install)
 locals {
   user_data = <<-EOF
     #!/bin/bash
+    set -e
     dnf install -y nginx
     systemctl enable --now nginx
     echo "<h1>QuakeWatch EC2 alive</h1>" > /usr/share/nginx/html/index.html
