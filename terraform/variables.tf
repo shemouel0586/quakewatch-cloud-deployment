@@ -1,11 +1,14 @@
+
 variable "aws_profile" {
-  type    = string
-  default = "default"
+  description = "AWS CLI profile to use (from ~/.aws/config)."
+  type        = string
+  default     = "default"
 }
 
 variable "aws_region" {
-  type    = string
-  default = "us-east-1"
+  description = "AWS region to deploy into."
+  type        = string
+  default     = "us-east-1"
 }
 
 variable "vpc_cidr" {
@@ -19,16 +22,19 @@ variable "public_subnet_cidr" {
 }
 
 variable "instance_type" {
-  type    = string
-  default = "t3.small"
+  description = "EC2 instance type. Use t3.* for x86_64 or t4g.* for ARM."
+  type        = string
+  default     = "t3.small"
 }
 
 variable "key_name" {
-  type    = string
-  default = "quakewatch-key"
+  description = "Existing EC2 key pair name for SSH."
+  type        = string
+  default     = "quakewatch-key"
 }
 
 variable "allow_ssh_cidr" {
-  type    = string
-  default = "0.0.0.0/0"
+  description = "CIDR allowed to SSH to the instance. Tighten for real use."
+  type        = string
+  default     = "0.0.0.0/0"
 }

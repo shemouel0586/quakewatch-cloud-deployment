@@ -1,11 +1,13 @@
-output "ec2_public_ip" {
+
+output "master_public_ip" {
   value = aws_instance.web.public_ip
 }
 
 output "ssh_command" {
-  value = "ssh -i ./<your-key>.pem ec2-user@${aws_instance.web.public_ip}"
+  value = "ssh -i ./quakewatch-key.pem ec2-user@${aws_instance.web.public_ip}"
 }
 
-output "test_url" {
-  value = "http://${aws_instance.web.public_ip}"
+output "demo_app_url" {
+  value       = "http://${aws_instance.web.public_ip}:30080"
+  description = "Reach the nginx demo exposed via NodePort"
 }
