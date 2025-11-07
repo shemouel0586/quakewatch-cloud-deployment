@@ -1,0 +1,1 @@
+# quakewatch-cloud-deployment
